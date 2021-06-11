@@ -1,0 +1,74 @@
+#Youtube video https://youtu.be/qXXC6ocTC80
+1-#Install Python First (download and install it on PC[https://www.python.org/downloads/])
+2-#Install & Create Virtual Environment for Django project
+pip install virtualenv
+
+#create virtualenv
+virtualenv -p python3 venv2021 [or] py -m venv venv2021
+
+#Active virtualenv
+venv2021\Scripts\activate.bat 
+or
+D:\vs_code\Django2021\mysite2021>venv2021\Scripts\activate.bat
+ [A] Yes to All
+ A
+ 
+#if not create or Active Virtualenv then run this command[Set-ExecutionPolicy unrestricted] on Windows PowerShell
+PS C:\WINDOWS\system32> Set-ExecutionPolicy unrestricted
+
+#Install Django
+py -m pip install Django
+
+#Django Version check command
+python -m django --version
+
+#Check All Installed packages
+pip freeze
+
+#Create Django project
+django-admin startproject DRF_Serializer
+
+#create App
+python manage.py startapp Ex_serializer
+
+#Install Django-REST-framework
+pip install djangorestframework
+
+#add App and rest-framework in Settings.py
+INSTALLED_APPS = [
+    ......
+    'rest_framework',
+    'Ex_serializer',
+]
+
+#Create model[Student]
+class Student(models.Model):
+
+# Register your models in admin.py
+
+# create database
+python manage.py makemigration
+python manage.py migrate
+
+
+#create SuperUser
+python manage.py createsuperuser
+Username (leave blank to use '****'): admin
+Email address: gohil.dev@gmail.com
+Password: admin
+Password (again): 
+Superuser created successfully.
+
+#Create Serializer[StudentSerializer]
+from rest_framework import serializers
+class StudentSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField(max_length=200)
+    roll = serializers.IntegerField()
+    city = serializers.CharField(max_length=100)
+
+#All Student Data Display code Query Set in views.py
+#urls.py add some urls
+
+
+
